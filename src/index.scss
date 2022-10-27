@@ -1,0 +1,16 @@
+@font-face {
+  font-family: "baumans";
+  src: local("baumans"),
+    url("./assets/fonts/baumans-v17-latin-regular.woff2") format("truetype");
+  font-weight: bold;
+}
+.body {
+  margin: 0;
+  background-color: #000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
