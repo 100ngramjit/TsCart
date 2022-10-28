@@ -4,13 +4,23 @@ export const darkTheme = createTheme({
   typography: {
     fontFamily: "baumans",
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          disableElevation: true,
+          textTransform: "none",
+        },
+      },
+    },
+  },
   palette: {
     mode: "dark",
     primary: {
       main: "#01BAEF",
     },
     secondary: {
-      main: "#0B4F6C",
+      main: "#16425B",
     },
     warning: {
       main: "#E4FF1A",
@@ -31,13 +41,23 @@ export const lightTheme = createTheme({
   typography: {
     fontFamily: "baumans",
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          disableElevation: true,
+          textTransform: "none",
+        },
+      },
+    },
+  },
   palette: {
     mode: "light",
     primary: {
       main: "#01BAEF",
     },
     secondary: {
-      main: "#0B4F6C",
+      main: "#16425B",
     },
     warning: {
       main: "#E4FF1A",
