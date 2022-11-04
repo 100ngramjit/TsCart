@@ -60,7 +60,69 @@ const GoogleAuth = () => {
     gapi.load("client:auth2", initClient);
   });
 
-  return <></>;
+  return (
+    <>
+      {authContext.profile.givenName !== "" && (
+        <Box>
+          <IconButton
+            onClick={handleClick}
+            size="small"
+            sx={{ ml: 2 }}
+            aria-controls={open ? "account-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+          >
+            {authContext?.profile?.imageUrl && (
+              <Avatar src={authContext.profile.imageUrl} />
+            )}
+          </IconButton>
+          <Menu
+            anchorEl={anchorEl}
+            id="account-menu"
+            open={open}
+            onClose={handleClose}
+            onClick={handleClose}
+          >
+            <MenuItem>{authContext.profile.givenName + " signed in"}</MenuItem>
+            <MenuItem>
+              <ListItemIcon>
+                <Logout fontSize="small" />
+              </ListItemIcon>
+              <GoogleLogout
+                clientId={clientId}
+                render={(renderProps) => (
+                  <Button onClick={renderProps.onClick} color="error">
+                    Log out
+                  </Button>
+                )}
+                onLogoutSuccess={logOut}
+              />
+            </MenuItem>
+          </Menu>
+        </Box>
+      )}
+      {authContext.profile.givenName === "" && (
+        <GoogleLogin
+          clientId={clientId}
+          render={(renderProps) => (
+            <Button
+              onClick={renderProps.onClick}
+              disabled={renderProps.disabled}
+              variant="contained"
+              color="secondary"
+            >
+              Sign in
+            </Button>
+          )}
+          onSuccess={onSuccess}
+          onFailure={onFailure}
+          cookiePolicy={"single_host_origin"}
+          isSignedIn={true}
+          prompt="select_account"
+        />
+      )}
+    </>
+  );
 };
 
 export default GoogleAuth;
