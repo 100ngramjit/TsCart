@@ -1,4 +1,4 @@
-import { Container, Grid, Typography, Box } from "@mui/material";
+import { Container, Grid, Paper, Typography, Box } from "@mui/material";
 import CartItemsListing from "components/CartItemsListing";
 import { retrieveCart } from "services/apiService";
 import { CartContext } from "context/CartContext";
@@ -28,6 +28,8 @@ const Cart = () => {
     subtotal: { raw: 0 },
     line_items: [],
   });
+  const price = products.subtotal.raw;
+
   useEffect(() => {
     const cartFetch = async () => {
       try {
@@ -86,6 +88,30 @@ const Cart = () => {
             )}
           </Box>
         </Grid>
+
+        {!isLoading && !isCartEmpty && (
+          <Grid item xs={3}>
+            <>
+              <Typography variant="h4" sx={{ pl: 2 }}>
+                Cart total
+              </Typography>
+              <Paper
+                sx={{
+                  height: 300,
+                  m: 1,
+                  p: 2,
+                }}
+                elevation={20}
+              >
+                <Typography variant="h6">Items Price - Rs {price}</Typography>
+                <Typography variant="h6">Shipping Price - Rs 0</Typography>
+                <hr />
+                <Typography variant="h6">Total Price -Rs {price}</Typography>
+                <hr />
+              </Paper>
+            </>
+          </Grid>
+        )}
       </Grid>
     </Container>
   );
