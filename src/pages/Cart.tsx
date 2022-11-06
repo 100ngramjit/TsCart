@@ -1,7 +1,9 @@
 import { Container, Grid, Paper, Typography, Box } from "@mui/material";
 import CartItemsListing from "components/CartItemsListing";
+import PaymentRazorpay from "components/PaymentRazorpay";
 import { retrieveCart } from "services/apiService";
 import { CartContext } from "context/CartContext";
+import { AuthContext } from "context/AuthContext";
 import { useState, useEffect, useContext } from "react";
 import { FadeLoader } from "react-spinners";
 
@@ -21,6 +23,7 @@ type prod = {
 };
 
 const Cart = () => {
+  const authContext = useContext(AuthContext);
   const cartContext = useContext(CartContext);
   const [isLoading, setIsLoading] = useState(true);
   const [isCartEmpty, setIsCartEmpty] = useState(false);
@@ -71,7 +74,7 @@ const Cart = () => {
                 alignItems="center"
                 minHeight="50vh"
               >
-                <FadeLoader color="#4a9b7f" />
+                <FadeLoader color="#01BAEF" />
               </Box>
             )}
             {isCartEmpty && !isLoading && (
@@ -108,6 +111,14 @@ const Cart = () => {
                 <hr />
                 <Typography variant="h6">Total Price -Rs {price}</Typography>
                 <hr />
+
+                <Box>
+                  <PaymentRazorpay
+                    price={price}
+                    name={authContext.profile.givenName}
+                  />
+                  <hr />
+                </Box>
               </Paper>
             </>
           </Grid>
