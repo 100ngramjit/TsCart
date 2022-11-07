@@ -42,6 +42,7 @@ const Listing = () => {
   useEffect(() => {
     const getProductsList = async () => {
       try {
+        setIsLoading(true);
         const response = await getProducts(page);
         setProducts(response.data);
         setIsLoading(false);
