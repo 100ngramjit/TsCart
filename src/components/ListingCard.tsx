@@ -43,7 +43,7 @@ const ListingCard = ({ product }: any) => {
           disabled={isLoading}
           onClick={() => addToCartHandler(product.id, 1)}
         >
-          Add To Cart
+          Add to cart
         </Button>
       </CardContent>
     </Card>

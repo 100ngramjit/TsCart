@@ -1,10 +1,17 @@
-import { Toolbar, Typography, Switch, IconButton, Badge } from "@mui/material";
+import {
+  Toolbar,
+  Typography,
+  IconButton,
+  Badge,
+  FormControlLabel,
+} from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "context/CartContext";
 import { useContext, useState, useEffect } from "react";
 import { retrieveCart } from "services/apiService";
 import GoogleAuth from "./GoogleAuth";
+import { MaterialUISwitch } from "./MUIstyledSwitch";
 
 const Header = (props: { changeTheme: any; mode: any }) => {
   const cartContext = useContext(CartContext);
@@ -30,14 +37,18 @@ const Header = (props: { changeTheme: any; mode: any }) => {
         TsCart
       </Typography>
 
-      <Switch
-        onChange={changeTheme}
-        checked={mode === "light" ? false : true}
-        color="secondary"
+      <FormControlLabel
+        value="top"
+        control={
+          <MaterialUISwitch
+            size="small"
+            onChange={changeTheme}
+            checked={mode !== "light"}
+          />
+        }
+        label={mode === "light" ? "light mode" : "dark mode"}
+        labelPlacement="top"
       />
-      <Typography variant="h6" sx={{ mr: 1 }}>
-        {mode === "light" ? "light" : "dark"} mode enabled
-      </Typography>
       <GoogleAuth />
       <IconButton onClick={() => nav("cart")}>
         <Badge badgeContent={totalCount} color="secondary">
