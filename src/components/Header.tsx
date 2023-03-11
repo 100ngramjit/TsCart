@@ -30,6 +30,7 @@ const Header = (props: { changeTheme: any; mode: any }) => {
         TsCart
       </Typography>
 
+      <GoogleAuth />
       <Switch
         onChange={changeTheme}
         checked={mode === "light" ? false : true}
@@ -38,7 +39,6 @@ const Header = (props: { changeTheme: any; mode: any }) => {
       <Typography variant="h6" sx={{ mr: 1 }}>
         {mode === "light" ? "light" : "dark"} mode enabled
       </Typography>
-      <GoogleAuth />
       <IconButton onClick={() => nav("cart")}>
         <Badge badgeContent={totalCount} color="secondary">
           <ShoppingCartIcon />

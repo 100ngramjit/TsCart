@@ -49,9 +49,9 @@ export default function PaymentRazorpay({ price, name }: any) {
     <Button
       variant="contained"
       onClick={pay}
-      disabled={name === "" || price === 0 ? true : false}
+      disabled={name === "" || price === 0}
     >
-      Checkout
+      {name === "" || price === 0 ? <>Sign in to checkout</> : <>Checkout</>}
     </Button>
   );
 }

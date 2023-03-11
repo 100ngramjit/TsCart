@@ -54,7 +54,7 @@ const Cart = () => {
   return (
     <Container>
       <Grid container sx={{ m: 1 }}>
-        <Grid item xs={9}>
+        <Grid item xs={8.5}>
           <Box
             sx={{
               height: 400,
@@ -93,7 +93,7 @@ const Cart = () => {
         </Grid>
 
         {!isLoading && !isCartEmpty && (
-          <Grid item xs={3}>
+          <Grid item xs={3.5}>
             <>
               <Typography variant="h4" sx={{ pl: 2 }}>
                 Cart total

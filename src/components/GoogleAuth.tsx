@@ -17,6 +17,7 @@ import {
   GoogleLogout,
   GoogleLogin,
 } from "react-google-login";
+import GoogleIcon from "@mui/icons-material/Google";
 
 const GoogleAuth = () => {
   const authContext = useContext(AuthContext);
@@ -108,6 +109,7 @@ const GoogleAuth = () => {
             <Button
               onClick={renderProps.onClick}
               disabled={renderProps.disabled}
+              startIcon={<GoogleIcon />}
               variant="contained"
               color="secondary"
             >
