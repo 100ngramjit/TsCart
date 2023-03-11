@@ -4,7 +4,6 @@ import {
   Card,
   CardMedia,
   CardContent,
-  Button,
   Chip,
   Avatar,
   Typography,
@@ -12,6 +11,8 @@ import {
   Container,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+import AddCircleOutlinedIcon from "@mui/icons-material/AddCircleOutlined";
 import { cartUpdate, deleteCartItem } from "services/apiService";
 import { CartContext } from "context/CartContext";
 
@@ -68,22 +69,18 @@ const CartItemsListing = ({ item }: any) => {
           ></CardMedia>
           <CardContent>
             <Typography variant="h5">{item.name}</Typography>
-            <Button
-              variant="contained"
-              color="error"
+            <IconButton
               disabled={isCartItemLoadingDecBtn === item.id ? true : false}
               onClick={() => dec(item)}
             >
-              -
-            </Button>
-            <Button
-              variant="contained"
+              <RemoveCircleIcon color="error" />
+            </IconButton>
+            <IconButton
               disabled={isCartItemLoadingIncBtn === item.id ? true : false}
               onClick={() => inc(item)}
-              sx={{ ml: 1 }}
             >
-              +
-            </Button>
+              <AddCircleOutlinedIcon color="primary" />
+            </IconButton>
             <Chip
               avatar={<Avatar>{item.quantity}</Avatar>}
               label="qty"

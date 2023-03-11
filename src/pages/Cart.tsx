@@ -100,7 +100,8 @@ const Cart = () => {
               </Typography>
               <Paper
                 sx={{
-                  height: 300,
+                  minHeight: 300,
+                  overflow: "auto",
                   m: 1,
                   p: 2,
                 }}
