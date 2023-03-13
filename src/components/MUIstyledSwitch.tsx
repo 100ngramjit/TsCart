@@ -3,9 +3,9 @@ import { styled, Switch } from "@mui/material";
 export const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 49,
   height: 25,
-  padding: 5,
+  padding: 3,
   "& .MuiSwitch-switchBase": {
-    margin: 1,
+    margin: 0,
     padding: 0,
     transform: "translateX(6px)",
     "&.Mui-checked": {
