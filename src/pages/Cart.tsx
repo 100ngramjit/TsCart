@@ -1,4 +1,11 @@
-import { Container, Grid, Paper, Typography, Box } from "@mui/material";
+import {
+  Container,
+  Grid,
+  Paper,
+  Typography,
+  Box,
+  Divider,
+} from "@mui/material";
 import CartItemsListing from "components/CartItemsListing";
 import PaymentRazorpay from "components/PaymentRazorpay";
 import { retrieveCart } from "services/apiService";
@@ -109,17 +116,21 @@ const Cart = () => {
               >
                 <Typography variant="h6">Items Price - Rs {price}</Typography>
                 <Typography variant="h6">Shipping Price - Rs 0</Typography>
-                <hr />
-                <Typography variant="h6">Total Price -Rs {price}</Typography>
-                <hr />
+                {/* <hr /> */}
+                <Divider />
 
-                <Box>
+                <Typography variant="h6">Total Price -Rs {price}</Typography>
+                {/* <hr /> */}
+                <Divider />
+
+                <Box sx={{ py: 2 }}>
                   <PaymentRazorpay
                     price={price}
                     name={authContext.profile.givenName}
                   />
-                  <hr />
+                  {/* <hr /> */}
                 </Box>
+                <Divider />
               </Paper>
             </>
           </Grid>
